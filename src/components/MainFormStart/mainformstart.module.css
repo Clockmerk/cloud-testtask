@@ -1,0 +1,37 @@
+.form_start {
+  margin: 24px;
+  width: 400px;
+}
+
+.form_start_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_start_form input {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  height: 22px;
+  width: 100%;
+  border-radius: 4px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+}
+
+.form_start_form button {
+  height: 44px;
+  width: 79px;
+  margin-top: 24px;
+  background: #5558fa;
+  border: 1px solid #5558fa;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.error {
+  margin-top: -15px;
+  margin-bottom: 5px;
+  color: red;
+}

@@ -1,0 +1,61 @@
+.form_header {
+  margin-top: 25px;
+  margin-left: 24px;
+}
+
+.form_header_img {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.form_header_div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form_header_textblock {
+  margin-top: -10px;
+  margin-left: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_header_name {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  margin-bottom: -8px;
+}
+
+.form_header_links a {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  margin-right: 25px;
+  margin-left: 5px;
+  text-decoration: none;
+  color: #5558fa;
+}
+
+.form_header_links a:visited {
+  color: #5558fa;
+}
+
+.form_header_spanIcons {
+  color: #cccccc;
+  height: 11.200000762939453px;
+  width: 12.799999237060547px;
+  left: 1.60009765625px;
+  top: 2.39990234375px;
+}
+
+.form_header_hr {
+  margin-top: 24px;
+  margin-right: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.form_start {
+  margin: 24px;
+}

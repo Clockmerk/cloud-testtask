@@ -1,0 +1,35 @@
+.firstform {
+  margin-top: 62px;
+  margin-left: 110px;
+}
+.firstform_bar {
+  margin-bottom: 103px;
+}
+
+.firstform_form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 20px;
+}
+
+.firstform_form input {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  height: 22px;
+  width: 100%;
+  border-radius: 4px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+}
+
+.firstform_button_back {
+  height: 44px;
+  width: 79px;
+  margin-top: 24px;
+  background: #ffffff;
+  border: 1px solid #5558fa;
+  border-radius: 4px;
+  color: #5558fa;
+}
