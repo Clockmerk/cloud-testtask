@@ -21,8 +21,11 @@ export const MainFormStart = () => {
     email: formData.email,
   };
 
-  const onSubmit = async (values: any) => {
-    dispatch(setUpForm({ ...values }));
+  const startForm = (values: {}) => {
+    if (values === initialValues) {
+      return navigate("/create");
+    }
+    dispatch(setUpForm({ ...formData, ...values }));
     navigate("/create");
   };
 
@@ -30,7 +33,7 @@ export const MainFormStart = () => {
     <div className={s.form_start}>
       <Formik
         initialValues={initialValues}
-        onSubmit={onSubmit}
+        onSubmit={startForm}
         validationSchema={formStartSchema}
       >
         <Form className={s.form_start_form}>
@@ -45,7 +48,7 @@ export const MainFormStart = () => {
             type="email"
           />
           <ErrorMessage className={s.error} component="span" name="email" />
-          <button type="submit">Начать</button>
+          <button type="submit">Apply</button>
         </Form>
       </Formik>
     </div>

@@ -4,7 +4,16 @@ export const initialState = {
   form: {
     email: "",
     phone: "",
+    nickname: "",
+    name: "",
+    sername: "",
+    sex: "",
+    advantages: [],
+    checkbox: [],
+    radio: 0,
+    about: "",
   },
+  step: 1,
 };
 
 export const getInitialState = () => {

@@ -2,10 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { LC_redux, getInitialState } from "./initialState";
 import { formReducer } from "./slices/formSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
+import { stepReducer } from "./slices/stepReducer";
 
 export const store = configureStore({
   reducer: {
     form: formReducer,
+    step: stepReducer,
   },
   preloadedState: getInitialState(),
 });

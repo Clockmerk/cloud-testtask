@@ -1,0 +1,44 @@
+.main {
+  background-color: #ffffff;
+  border-radius: 24px;
+  width: 900px;
+  margin-left: 233px;
+  margin-right: 233px;
+  margin-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.main_buttons {
+  margin-bottom: 80px;
+  margin-top: 88px;
+}
+
+.main_button_back {
+  height: 44px;
+  width: 79px;
+  background: #ffffff;
+  border: 1px solid #5558fa;
+  border-radius: 4px;
+  color: #5558fa;
+  margin-left: 110px;
+  margin-right: 546px;
+}
+
+.main_button_forth {
+  height: 44px;
+  width: 79px;
+  background: #5558fa;
+  border: 1px solid #5558fa;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.main_button_back:hover {
+  box-shadow: 0px 0px 5px #5558fa;
+}
+
+.main_button_forth:hover {
+  box-shadow: 0px 0px 5px #5558fa;
+}

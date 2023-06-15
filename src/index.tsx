@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { Main } from "./pages/Main/main";
-import { Form } from "./pages/Form/form";
+import { FormConstruct } from "./pages/FormConstruct/formconstruct";
 import { Error404 } from "./pages/Error404/error404";
 
 const router = createBrowserRouter([
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: "create",
-        element: <Form />,
+        element: <FormConstruct />,
       },
     ],
   },
