@@ -1,18 +1,11 @@
+import { FormValuesType } from "../types/types";
+
 export const LC_redux = "redux-store";
 
 export const initialState = {
   form: {
-    email: "",
-    phone: "",
-    nickname: "",
-    name: "",
-    sername: "",
-    sex: "",
-    advantages: [],
     checkbox: [],
-    radio: 0,
-    about: "",
-  },
+  } as unknown as FormValuesType,
   step: 1,
 };
 

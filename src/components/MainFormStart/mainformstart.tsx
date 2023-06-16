@@ -25,7 +25,7 @@ export const MainFormStart = () => {
     if (values === initialValues) {
       return navigate("/create");
     }
-    dispatch(setUpForm({ ...formData, ...values }));
+    dispatch(setUpForm({ ...values }));
     navigate("/create");
   };
 
@@ -38,7 +38,12 @@ export const MainFormStart = () => {
       >
         <Form className={s.form_start_form}>
           <label htmlFor="phone">Номер телефона</label>
-          <Field id="phone" name="phone" placeholder="+7 999 999-99-99" />
+          <Field
+            id="phone"
+            name="phone"
+            placeholder="+7 999 999-99-99"
+            type="phone"
+          />
           <ErrorMessage className={s.error} component="span" name="phone" />
           <label htmlFor="email">Email</label>
           <Field

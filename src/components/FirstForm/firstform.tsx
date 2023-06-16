@@ -27,8 +27,8 @@ export const FirstForm = () => {
       </p>
       <ErrorMessage className={s.error} component="span" name="sername" />
       <label htmlFor="field-sex">Sex</label>
-      <Field id="field-sex" name="sex" as="select" >
-        <option value="" disabled  hidden >
+      <Field id="field-sex" name="sex" as="select" defaultValue="Не выбрано">
+        <option value="Не выбрано" disabled hidden>
           Не выбрано
         </option>
         <option value="man">man</option>

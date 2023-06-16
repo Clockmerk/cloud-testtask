@@ -8,8 +8,28 @@ export const formSlice = createSlice({
     setUpForm: (_, action) => {
       return action.payload;
     },
+    clearForm: () => {
+      return initialState.form;
+    },
+    // @ts-ignore
+    setCheckboxes: (state, action) => {
+      const checkbox = state.checkbox?.find(
+        (element) => element === action.payload
+      );
+
+      if (checkbox) {
+        return {
+          ...state,
+          checkbox: state.checkbox.filter(
+            (element) => element !== action.payload
+          ),
+        };
+      }
+
+      state.checkbox.push(action.payload);
+    },
   },
 });
 
-export const { setUpForm } = formSlice.actions;
+export const { setUpForm, clearForm, setCheckboxes } = formSlice.actions;
 export const formReducer = formSlice.reducer;
