@@ -21,11 +21,18 @@ export const MainFormStart = () => {
     email: formData.email,
   };
 
-  const startForm = (values: {}) => {
+  const startForm = (values: { phone: string; email: string }) => {
     if (values === initialValues) {
       return navigate("/create");
     }
-    dispatch(setUpForm({ ...values }));
+
+    dispatch(
+      setUpForm({
+        checkbox: [],
+        advantages: [""],
+        ...values,
+      })
+    );
     navigate("/create");
   };
 

@@ -5,10 +5,7 @@ import s from "./formconstruct.module.css";
 import { useAppSelector } from "../../redux/store";
 import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {
-  setCheckboxes,
-  setUpForm,
-} from "../../redux/slices/formSlice";
+import { setCheckboxes, setUpForm } from "../../redux/slices/formSlice";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { setStep } from "../../redux/slices/stepReducer";
@@ -26,7 +23,9 @@ const formFirstSchema = Yup.object().shape({
   name: Yup.string().required("Введите name"),
   sername: Yup.string().required("Введите sername"),
   sex: Yup.string().oneOf(["man", "woman"]).required("Укажите пол"),
-  advantages: Yup.string(), //.of(Yup.string()).required("Укажите преимущества"),
+  advantages: Yup.array()
+    .of(Yup.string().required("Заполните поля или удалите их"))
+    .required(),
   checkbox: Yup.array().of(Yup.number()).required("Укажите пункты"),
   radio: Yup.number().required("Выберите пункт"),
   about: Yup.string().max(200).required("Укажите описание"),
@@ -52,7 +51,7 @@ export const FormConstruct = () => {
     name: formData.name,
     sername: formData.sername,
     sex: formData.sex,
-    advantages: formData.advantages,
+    advantages: [...formData.advantages],
     checkbox: checkboxesString,
     radio: formData.radio?.toString(),
     about: formData.about,
@@ -77,7 +76,11 @@ export const FormConstruct = () => {
     const value = target.value;
     const field = target.name;
 
-    if (field !== "checkbox" && field !== "radio") {
+    if (
+      field !== "checkbox" &&
+      field !== "radio" &&
+      target.className !== "advantage"
+    ) {
       dispatch(setUpForm({ ...formData, [field]: value }));
     }
 
@@ -104,14 +107,17 @@ export const FormConstruct = () => {
         onSubmit={onSubmit}
         validationSchema={formFirstSchema}
       >
-        <Form onChange={(e) => handleValues(e)}>
-          {step === 1 && <FirstForm />}
-          {step === 2 && <SecondForm />}
-          {step === 3 && <ThirdForm />}
-          <div className={s.main_buttons}>
-            <StepButtons />
-          </div>
-        </Form>
+        {({ values }) => (
+          <Form onChange={(e) => handleValues(e)}>
+            {step === 1 && <FirstForm />}
+            {/* @ts-ignore */}
+            {step === 2 && <SecondForm {...values} />}
+            {step === 3 && <ThirdForm />}
+            <div className={s.main_buttons}>
+              <StepButtons />
+            </div>
+          </Form>
+        )}
       </Formik>
       {showModal &&
         createPortal(

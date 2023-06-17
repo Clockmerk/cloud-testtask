@@ -6,6 +6,10 @@
   width: 300px;
 }
 
+.secondform_array {
+  display: flex;
+  flex-direction: row;
+}
 .secondform_inputs {
   margin-top: 8px;
   height: 22px;

@@ -1,17 +1,52 @@
-import { ErrorMessage, Field } from "formik";
+import { ErrorMessage, Field, FieldArray } from "formik";
 import s from "./secondform.module.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUpForm } from "../../redux/slices/formSlice";
+import { useAppSelector } from "../../redux/store";
+import { FormValuesType } from "../../types/types";
 
-export const SecondForm = () => {
+export const SecondForm = (values: FormValuesType) => {
+  const formData = useAppSelector((state) => state.form);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setUpForm({ ...formData, advantages: values.advantages }));
+  }, [values.advantages]);
+
   return (
     <div className={s.secondform}>
-      <label htmlFor="field-advantages">Advantages</label>
-      <Field
-        id="field-advantages"
-        name="advantages"
-        className={s.secondform_inputs}
-      />
-      <ErrorMessage className={s.error} component="span" name="advantages" />
-
+      <FieldArray name="advantages">
+        {({ remove, push }) => (
+          <div>
+            <label htmlFor="advantages">Advantages</label>
+            {values.advantages.length > 0 &&
+              values.advantages.map((element: string, index: number) => (
+                <div id="advantages" className={s.secondform_array} key={index}>
+                  <div>
+                    <Field
+                      name={`advantages.${index}`}
+                      className="advantage"
+                      placeholder="Placeholder"
+                      type="text"
+                      value={element}
+                    />
+                  </div>
+                  <div>
+                    <button type="button" onClick={() => remove(index)}>
+                      X
+                    </button>
+                  </div>
+                </div>
+              ))}
+            <button type="button" onClick={() => push("")}>
+              +
+            </button>
+            <ErrorMessage name="advantages" component="p" className={s.error} />
+            <ErrorMessage name="advantage" component="p" className={s.error} />
+          </div>
+        )}
+      </FieldArray>
       <label>Checkbox group </label>
       <label htmlFor="field-checkbox-group-1" className={s.secondform_groups}>
         <Field

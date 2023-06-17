@@ -33,7 +33,11 @@ export const StepButtons = () => {
         </button>
       )}
       {step !== 3 && (
-        <button className={s.main_button_forth} onClick={() => handleForth()}>
+        <button
+          type="button"
+          className={s.main_button_forth}
+          onClick={() => handleForth()}
+        >
           Next
         </button>
       )}

@@ -5,6 +5,7 @@ export const LC_redux = "redux-store";
 export const initialState = {
   form: {
     checkbox: [],
+    advantages: [""],
   } as unknown as FormValuesType,
   step: 1,
 };
