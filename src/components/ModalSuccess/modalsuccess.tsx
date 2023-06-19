@@ -3,7 +3,6 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearForm } from "../../redux/slices/formSlice";
 import { setStep } from "../../redux/slices/stepReducer";
 
 export const ModalSuccess = () => {
@@ -11,7 +10,6 @@ export const ModalSuccess = () => {
   const navigate = useNavigate();
 
   const handleExit = () => {
-    dispatch(clearForm(null));
     dispatch(setStep(1));
     return navigate("/");
   };

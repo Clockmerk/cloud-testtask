@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { FormValuesType } from "../../types/types";
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -6,7 +7,10 @@ export const apiSlice = createApi({
     baseUrl: "https://api.sbercloud.ru/content/v1/bootcamp/frontend",
   }),
   endpoints: (builder) => ({
-    submitForm: builder.mutation({
+    submitForm: builder.mutation<
+      { message: string; status: string },
+      FormValuesType
+    >({
       query: (payload) => ({
         url: "/",
         method: "POST",

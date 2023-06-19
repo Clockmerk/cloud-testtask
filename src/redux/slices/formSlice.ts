@@ -11,7 +11,6 @@ export const formSlice = createSlice({
     clearForm: () => {
       return initialState.form;
     },
-    // @ts-ignore
     setCheckboxes: (state, action) => {
       const checkbox = state.checkbox?.find(
         (element) => element === action.payload

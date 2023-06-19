@@ -6,37 +6,23 @@ import { useAppSelector } from "../../redux/store";
 import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCheckboxes, setUpForm } from "../../redux/slices/formSlice";
-import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { setStep } from "../../redux/slices/stepReducer";
 import { ProgressBar } from "../../components/ProgressBar/progressbar";
 import { createPortal } from "react-dom";
 import { useState } from "react";
-
 import { useSubmitFormMutation } from "../../redux/slices/apiSlice";
 import { StepButtons } from "../../components/StepButtons/stepbuttons";
 import { ModalSuccess } from "../../components/ModalSuccess/modalsuccess";
 import { ModalFail } from "../../components/ModalFail/modalfail";
-
-const formFirstSchema = Yup.object().shape({
-  nickname: Yup.string().required("Укажите nickname"),
-  name: Yup.string().required("Введите name"),
-  sername: Yup.string().required("Введите sername"),
-  sex: Yup.string().oneOf(["man", "woman"]).required("Укажите пол"),
-  advantages: Yup.array()
-    .of(Yup.string().required("Заполните поля или удалите их"))
-    .required(),
-  checkbox: Yup.array().of(Yup.number()).required("Укажите пункты"),
-  radio: Yup.number().required("Выберите пункт"),
-  about: Yup.string().max(200).required("Укажите описание"),
-});
+import { formtSchema } from "../../components/constants/yup";
 
 export const FormConstruct = () => {
+  const [success, setSuccess] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const step = useAppSelector((state) => state.step);
   const formData = useAppSelector((state) => state.form);
   const dispatch = useDispatch();
-  const [showModal, setShowModal] = useState(false);
-  const [success, setSuccess] = useState(true);
 
   if (!formData.phone) {
     dispatch(setStep(1));
@@ -55,20 +41,6 @@ export const FormConstruct = () => {
     checkbox: checkboxesString,
     radio: formData.radio?.toString(),
     about: formData.about,
-  };
-
-  const [submitForm] = useSubmitFormMutation();
-
-  const onSubmit = async () => {
-    const res = await submitForm(formData);
-    // @ts-ignore
-    if (res.data.status === "success") {
-      setSuccess(true);
-      setShowModal(true);
-      return;
-    }
-    setSuccess(false);
-    setShowModal(true);
   };
 
   const handleValues = (event: React.FormEvent<HTMLFormElement>) => {
@@ -99,18 +71,30 @@ export const FormConstruct = () => {
     }
   };
 
+  const [submitForm] = useSubmitFormMutation();
+
+  const onSubmit = async () => {
+    const res = await submitForm(formData).unwrap();
+
+    if (res.status === "success") {
+      setSuccess(true);
+      setShowModal(true);
+      return dispatch(setUpForm({ ...formData, delete: true }));
+    }
+    return setShowModal(true);
+  };
+
   return (
     <div className={s.main}>
       <ProgressBar />
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={formFirstSchema}
+        validationSchema={formtSchema}
       >
         {({ values }) => (
           <Form onChange={(e) => handleValues(e)}>
             {step === 1 && <FirstForm />}
-            {/* @ts-ignore */}
             {step === 2 && <SecondForm {...values} />}
             {step === 3 && <ThirdForm />}
             <div className={s.main_buttons}>

@@ -3,11 +3,16 @@
   flex-direction: column;
   margin-top: 66px;
   margin-left: 110px;
-  width: 300px;
+  margin-right: 110px;
+  width: auto;
+}
+
+.thirdform div {
+  display: flex;
+  flex-direction: row;
 }
 
 .firstform label {
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -15,7 +20,7 @@
 
 .thirdform textarea {
   margin-top: 8px;
-  width: 680px;
+  width: auto;
   height: 84px;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.16);
@@ -24,7 +29,6 @@
 }
 
 .tooltip {
-  font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
@@ -32,7 +36,8 @@
   margin-bottom: 24px;
   display: flex;
   align-items: center;
-  width: 20px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .tooltip_text {
@@ -43,7 +48,7 @@
   z-index: 1;
 }
 
-.tooltip:hover .tooltip_text {
+.tooltip_tip:hover ~ .tooltip_text {
   visibility: visible;
 }
 
@@ -52,6 +57,13 @@
   font-size: 14px;
   line-height: 20px;
   color: red;
-  margin-top: -20px;
   text-align: center;
+  width: 123px;
+}
+
+@media screen and (max-width: 640px) {
+  .thirdform {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
 }

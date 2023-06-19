@@ -28,6 +28,19 @@
   margin-bottom: -8px;
 }
 
+.form_header_links {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin-left: -40px;
+}
+
+.form_header_links li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .form_header_links a {
   font-size: 12px;
   font-weight: 400;
@@ -44,10 +57,8 @@
 
 .form_header_spanIcons {
   color: #cccccc;
-  height: 11.200000762939453px;
-  width: 12.799999237060547px;
-  left: 1.60009765625px;
-  top: 2.39990234375px;
+  height: 11.2px;
+  width: 12.7px;
 }
 
 .form_header_hr {
@@ -58,4 +69,16 @@
 
 .form_start {
   margin: 24px;
+}
+
+@media screen and (max-width: 390px) {
+  .form_header_links li {
+    width: 72px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .form_header_links {
+    flex-direction: column;
+  }
 }

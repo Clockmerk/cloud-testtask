@@ -8,7 +8,9 @@ export const FirstForm = () => {
       <Field id="field-nickname" name="nickname" />
       <p className={s.tooltip}>
         Tip
-        <span className={s.tooltip_text}>Введите ваш никнейм</span>
+        <span className={s.tooltip_text_big}>
+          Максимальная длина 30 символов, буквы и цифры (спец символы запрещены)
+        </span>
       </p>
       <ErrorMessage className={s.error} component="span" name="nickname" />
 
@@ -16,14 +18,18 @@ export const FirstForm = () => {
       <Field id="field-name" name="name" />
       <p className={s.tooltip}>
         Tip
-        <span className={s.tooltip_text}>Введите ваше имя</span>
+        <span className={s.tooltip_text_medium}>
+          Максимальная длина 50 символов, только буквы
+        </span>
       </p>
       <ErrorMessage className={s.error} component="span" name="name" />
       <label htmlFor="field-sername">Sername</label>
       <Field id="field-sername" name="sername" />
       <p className={s.tooltip}>
         Tip
-        <span className={s.tooltip_text}>Введите ваше отчество</span>
+        <span className={s.tooltip_text_medium}>
+          Максимальная длина 50 символов, только буквы
+        </span>
       </p>
       <ErrorMessage className={s.error} component="span" name="sername" />
       <label htmlFor="field-sex">Sex</label>
@@ -31,8 +37,12 @@ export const FirstForm = () => {
         <option value="Не выбрано" disabled hidden>
           Не выбрано
         </option>
-        <option value="man">man</option>
-        <option value="woman">woman</option>
+        <option id="field-sex-option-man" value="man">
+          man
+        </option>
+        <option id="field-sex-option-woman" value="woman">
+          woman
+        </option>
       </Field>
       <p className={s.tooltip}>
         Tip

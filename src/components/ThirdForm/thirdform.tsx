@@ -9,14 +9,17 @@ export const ThirdForm = () => {
     <div className={s.thirdform}>
       <label htmlFor="field-about">About</label>
       <Field id="field-about" name="about" as="textarea" maxLength="200" />
-      <p className={s.tooltip}>
-        Tip
-        <span className={s.tooltip_text}>
-          Введите ваше описание. Максимальная длина 200 символов, не учитывая
-          пробелов
-        </span>
-      </p>
-      <span>{formData.about?.split(" ").join("").length || 0}</span>
+      <div>
+        <p className={s.tooltip}>
+          <span className={s.tooltip_tip}>Tip</span>
+
+          <span className={s.tooltip_text}>
+            Максимальная длина 200 символов, не учитывая пробелов
+          </span>
+          <span>{formData.about?.split(" ").join("").length || 0}/200</span>
+        </p>
+      </div>
+
       <ErrorMessage className={s.error} component="span" name="about" />
     </div>
   );

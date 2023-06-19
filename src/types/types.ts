@@ -7,9 +7,21 @@ export interface FormValuesType {
   name: string;
   sername: string;
   sex: "man" | "woman";
-  advantages: [string];
-  checkbox: [number];
+  advantages: string[];
+  checkbox: number[];
   radio: number;
+  about: string;
+  delete: boolean;
+}
+
+export interface FormikValuesType {
+  nickname: string;
+  name: string;
+  sername: string;
+  sex: "man" | "woman";
+  advantages: string[];
+  checkbox: string[];
+  radio: string;
   about: string;
 }
 

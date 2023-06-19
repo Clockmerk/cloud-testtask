@@ -9,10 +9,11 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 26px;
+  text-align: center;
 }
 
 .modal_success div {
-  width: 396px;
+  width: auto;
   height: 132px;
   left: calc(50% - 396px / 2);
   top: calc(50% - 132px / 2 - 8.5px);
@@ -37,6 +38,10 @@
   line-height: 20px;
 }
 
+.modal_success button:hover {
+  box-shadow: 0px 0px 5px #5558fa;
+}
+
 .modal_circle_done {
   border-radius: 50%;
   animation: pulse 2s infinite;
@@ -59,4 +64,10 @@
   height: 38.4px;
   width: 38.4px;
   color: #05ae71;
+}
+
+@media screen and (max-width: 640px) {
+  .modal_success {
+    gap: 14px;
+  }
 }

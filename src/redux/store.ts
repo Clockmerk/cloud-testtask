@@ -3,7 +3,7 @@ import { LC_redux, getInitialState } from "./initialState";
 import { formReducer } from "./slices/formSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { stepReducer } from "./slices/stepReducer";
-import { apiReducer } from "./slices/apiSlice";
+import { apiReducer, apiSlice } from "./slices/apiSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +12,8 @@ export const store = configureStore({
     api: apiReducer,
   },
   preloadedState: getInitialState(),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
 });
 
 store.subscribe(() => {

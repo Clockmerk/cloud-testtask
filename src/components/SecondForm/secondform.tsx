@@ -4,9 +4,11 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUpForm } from "../../redux/slices/formSlice";
 import { useAppSelector } from "../../redux/store";
-import { FormValuesType } from "../../types/types";
+import { FormikValuesType } from "../../types/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-export const SecondForm = (values: FormValuesType) => {
+export const SecondForm = (values: FormikValuesType) => {
   const formData = useAppSelector((state) => state.form);
   const dispatch = useDispatch();
 
@@ -18,36 +20,52 @@ export const SecondForm = (values: FormValuesType) => {
     <div className={s.secondform}>
       <FieldArray name="advantages">
         {({ remove, push }) => (
-          <div>
+          <div className={s.secondform_array}>
             <label htmlFor="advantages">Advantages</label>
             {values.advantages.length > 0 &&
               values.advantages.map((element: string, index: number) => (
-                <div id="advantages" className={s.secondform_array} key={index}>
-                  <div>
+                <>
+                  <div
+                    id={`field-advantages-${index}`}
+                    className={s.secondform_array_input}
+                    key={`advantage-${index}`}
+                  >
                     <Field
+                      id={`field-advantages-${index}`}
                       name={`advantages.${index}`}
                       className="advantage"
-                      placeholder="Placeholder"
                       type="text"
                       value={element}
                     />
-                  </div>
-                  <div>
-                    <button type="button" onClick={() => remove(index)}>
-                      X
+                    <button
+                      id={`button-remove-${index}`}
+                      className={s.button_remove}
+                      type="button"
+                      onClick={() => remove(index)}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
                     </button>
                   </div>
-                </div>
+                  <ErrorMessage
+                    name={`advantages.${index}`}
+                    component="span"
+                    className={s.error}
+                  />
+                </>
               ))}
-            <button type="button" onClick={() => push("")}>
-              +
+            <button
+              id="button-remove-add"
+              className={s.button_add}
+              type="button"
+              onClick={() => push("")}
+            >
+              <FontAwesomeIcon icon={faPlus} />
             </button>
-            <ErrorMessage name="advantages" component="p" className={s.error} />
-            <ErrorMessage name="advantage" component="p" className={s.error} />
           </div>
         )}
       </FieldArray>
-      <label>Checkbox group </label>
+
+      <label className={s.groups_head_label}>Checkbox group </label>
       <label htmlFor="field-checkbox-group-1" className={s.secondform_groups}>
         <Field
           id="field-checkbox-group-1"
@@ -75,9 +93,8 @@ export const SecondForm = (values: FormValuesType) => {
         />
         3
       </label>
-      <ErrorMessage className={s.error} component="span" name="checkbox" />
 
-      <label>Radio group </label>
+      <label className={s.groups_head_label}>Radio group </label>
       <label htmlFor="field-radio-group-1" className={s.secondform_groups}>
         <Field type="radio" id="field-radio-group-1" name="radio" value="1" />1
       </label>
@@ -88,7 +105,7 @@ export const SecondForm = (values: FormValuesType) => {
         <Field type="radio" id="field-radio-group-3" name="radio" value="3" />3
       </label>
 
-      <ErrorMessage className={s.error} component="span" name="radio" />
+      <ErrorMessage className={s.error} component="p" name="radio" />
     </div>
   );
 };

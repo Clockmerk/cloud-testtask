@@ -19,12 +19,15 @@ const router = createBrowserRouter([
         element: <Main />,
       },
       {
+        path: "create",
+        element: <FormConstruct />,
+      },
+      {
         path: "*",
         element: <Error404 />,
       },
       {
-        path: "create",
-        element: <FormConstruct />,
+        path: "src/assets/images/resume.jpg",
       },
     ],
   },

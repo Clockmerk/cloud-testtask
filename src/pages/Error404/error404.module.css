@@ -1,12 +1,42 @@
 .main {
   background-color: #ffffff;
   border-radius: 12px 12px 0px 0px;
-  height: 704px;
-  width: 900px;
-  margin-left: 233px;
-  margin-right: 233px;
-  margin-top: 24px;
-
+  height: 200px;
+  width: 600px;
+  margin-top: 25vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #5558fa;
+}
+
+@media screen and (max-width: 935px) {
+  .main {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main {
+    width: 390px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .main {
+    width: 425px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .main {
+    width: 375px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .main {
+    width: 280px;
+  }
 }

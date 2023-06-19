@@ -9,21 +9,21 @@
 .progress {
   background: rgba(0, 0, 0, 0.08);
   border-radius: 8px;
-  width: 680px;
+  width: auto;
   height: 8px;
 }
 
 .progress_50 {
   background: linear-gradient(90deg, #5558fa 50%, rgba(0, 0, 0, 0.08) 50%);
   border-radius: 8px;
-  width: 680px;
+  width: auto;
   height: 8px;
 }
 
 .progress_100 {
   background: #5558fa;
   border-radius: 8px;
-  width: 680px;
+  width: auto;
   height: 8px;
 }
 
@@ -97,4 +97,11 @@
 
 .number_active {
   color: #5558fa;
+}
+
+@media screen and (max-width: 650px) {
+  .main_bar {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
 }
