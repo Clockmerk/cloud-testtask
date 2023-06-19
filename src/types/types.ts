@@ -25,6 +25,11 @@ export interface FormikValuesType {
   about: string;
 }
 
+export interface PhoneValueType {
+  phone: string | undefined;
+}
+
 export interface SetModalType {
   showModal: Dispatch<SetStateAction<boolean>>;
 }
+

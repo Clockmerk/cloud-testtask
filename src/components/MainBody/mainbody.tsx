@@ -8,9 +8,10 @@ import { useState } from "react";
 import { formStartSchema } from "../constants/yup";
 import { FormStart } from "../FormStart/formstart";
 
+
 export const MainBody = () => {
   const formData = useAppSelector((state) => state.form);
-  const [phone, setPhone] = useState(formData.phone);
+  const [phone, setPhone] = useState<string | undefined>(formData.phone)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -84,7 +85,7 @@ export const MainBody = () => {
 
     if (target.name === "phone") {
       const formattedValue = formatPhone(value);
-      //@ts-ignore
+
       setPhone(formattedValue);
     }
   };
