@@ -15,7 +15,7 @@ import { useSubmitFormMutation } from "../../redux/slices/apiSlice";
 import { StepButtons } from "../../components/StepButtons/stepbuttons";
 import { ModalSuccess } from "../../components/ModalSuccess/modalsuccess";
 import { ModalFail } from "../../components/ModalFail/modalfail";
-import { formtSchema } from "../../components/constants/yup";
+import { formtSchema } from "../../constants/yup";
 
 export const FormConstruct = () => {
   const [success, setSuccess] = useState(false);

@@ -1,14 +1,12 @@
 import { ErrorMessage, Field, useFormikContext } from "formik";
 import s from "./formstart.module.css";
-import { $regexPhone } from "../constants/yup";
+import { $regexPhone } from "../../constants/yup";
 import { PhoneValueType } from "../../types/types";
 
-
 export const FormStart = ({ phone }: PhoneValueType) => {
-  const formikProps= useFormikContext()
-  const values: {phone:string} = formikProps.values as {phone:string};
+  const formikProps = useFormikContext();
+  const values: { phone: string } = formikProps.values as { phone: string };
   const phoneFormik = values.phone;
-
 
   if (phone?.search($regexPhone) === 0 && phoneFormik?.search($regexPhone)) {
     formikProps.setFieldValue("phone", phone);
@@ -16,7 +14,7 @@ export const FormStart = ({ phone }: PhoneValueType) => {
 
   return (
     <>
-      <label htmlFor="field-phone">Номер телефона</label>
+      <label htmlFor="field-phone">Phone</label>
       <Field
         id="field-phone"
         name="phone"

@@ -5,13 +5,12 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearForm, setUpForm } from "../../redux/slices/formSlice";
 import { useState } from "react";
-import { formStartSchema } from "../constants/yup";
+import { formStartSchema } from "../../constants/yup";
 import { FormStart } from "../FormStart/formstart";
-
 
 export const MainBody = () => {
   const formData = useAppSelector((state) => state.form);
-  const [phone, setPhone] = useState<string | undefined>(formData.phone)
+  const [phone, setPhone] = useState<string | undefined>(formData.phone);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

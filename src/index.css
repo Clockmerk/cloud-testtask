@@ -5,7 +5,6 @@ body {
   background-color: rgb(245, 245, 245);
 
   font-family: "SB Sans Interface";
-  font-style: normal;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,4 +20,13 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+@font-face {
+  font-family: "SB Sans Interface";
+  font-style: normal;
+  src: local("SB Sans Interface"),
+  url("./vendor/fonts/SB_Sans_Interface.woff2") format(woff2),
+  url("./vendor/fonts/SB_Sans_Interface.woff") format(woff),
+  url("./vendor/fonts/SB_Sans_Interface.eot") format(opentype);
 }

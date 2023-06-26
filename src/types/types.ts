@@ -32,4 +32,3 @@ export interface PhoneValueType {
 export interface SetModalType {
   showModal: Dispatch<SetStateAction<boolean>>;
 }
-
